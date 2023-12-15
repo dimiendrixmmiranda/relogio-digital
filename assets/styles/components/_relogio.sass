@@ -1,0 +1,69 @@
+@import ../abstract/_variaveis.sass
+
+h1
+    font-size: 3.5em
+    text-align: center
+.relogio
+    position: relative
+    display: flex
+    gap: 40px
+    flex-direction: column
+    @media screen and (min-width: 768px)
+        flex-direction: row
+    div
+        position: absolute
+        text-align: center
+        font-weight: 500
+        font-size: 1.3em
+        animation: fonteAnimado infinite 10s linear
+    #hora, #minuto, #segundo
+        top: 30%
+    span
+        position: absolute
+        top: 60%
+        left: 50%
+        transform: translate(-50%, -50%)
+        text-transform: uppercase
+    .circulo
+        position: relative
+        width: 150px
+        height: 150px
+        display: flex
+        align-items: center
+        justify-content: center
+        svg
+            position: relative
+            width: 150px
+            height: 150px
+            transform: rotate(270deg) // é necessário rotacionar para chegar na posição inicial do ponteiro do relógio
+            circle
+                width: 100%
+                height: 100%
+                fill: transparent
+                stroke: $cor-stroke-fundo-relogio
+                stroke-width: 4
+                transform: translate(5px, 5px)
+                &:nth-child(2)
+                    stroke: var(--cor-stroke)
+                    stroke-dasharray: 440 // até preencher todo o círculo
+        .dot
+            position: absolute
+            width: 100%
+            height: 100%
+            z-index: 2
+            display: flex
+            justify-content: center
+            &::before
+                content: ''
+                position: absolute
+                width: 10px
+                height: 10px
+                background: var(--cor-stroke)
+                border-radius: 50%
+                box-shadow: 0 0 15px 5px var(--cor-stroke)
+    .periodo
+        font-size: 1em
+        position: absolute
+        left: 105%
+.data-atual
+    font-size: 2em
